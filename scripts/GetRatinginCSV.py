@@ -10,15 +10,16 @@ import csv
 
 DT = datetime.datetime.now()
 DateStamp = DT.strftime('%Y-%m-%d_%H-%M-%S')
+CSVpath = input("Provide the full path where CSV reports shall be stored ... :  ")
 CSVfile = "ConsolidateEWArating_%s.CSV" % DateStamp
-OutCSV = open(CSVfile, 'w', newline='')
+OutCSV = open(CSVpath + "/" + CSVfile, 'w', newline='')
 OutWriter = csv.writer(OutCSV)
 
 ALLHTMLfiles = []
-
-for HTMLfile in os.listdir(os.getcwd()):
+EWApath = input("Provide the full path where EWA reports are stored ... :  ")
+for HTMLfile in os.listdir(EWApath):
 	if HTMLfile.endswith('.htm'):
-		ALLHTMLfiles.append(HTMLfile)
+		ALLHTMLfiles.append(EWApath + "/" + HTMLfile)
 
 for EWAfile in ALLHTMLfiles:
 	EXF = open(EWAfile)                			    # Open a offline HTML file
@@ -35,14 +36,15 @@ for EWAfile in ALLHTMLfiles:
 			IMGsplit = IMG['alt'].split(' ')
 			IMGcsv = IMGsplit[0]
 			EWAfileSPLIT = EWAfile.split('_')
+			EWAfileSPLIT
 			EWAfileSID = EWAfileSPLIT[0]
 			EWAfileRATING = EWAfileSPLIT[1]
-			EWAfileWEEKhtm = EWAfileSPLIT[3].split('.')
-			EWAfileWEEK = EWAfileWEEKhtm[0]
+			# EWAfileWEEKhtm = EWAfileSPLIT[3].split('.')
+			# EWAfileWEEK = EWAfileWEEKhtm[0]
 
 
 			headCSV = HEAD[i].getText()
 
-			OutWriter.writerow([DateStamp, EWAfileSID, EWAfileWEEK, EWAfileRATING, IMGcsv, headCSV])
+			OutWriter.writerow([DateStamp, EWAfileSID, EWAfileRATING, IMGcsv, headCSV])
 
 OutCSV.close()

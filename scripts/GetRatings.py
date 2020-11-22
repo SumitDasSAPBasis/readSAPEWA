@@ -1,8 +1,11 @@
 #! python
+# Sumit Das 18-MAR-2019
+# Get ALL Rating in 1 EWA file
+# Sumit Das 22-NOV-2020
 
 from bs4 import BeautifulSoup
 
-EXF = open('P6E.htm')                # Open a offline HTML file
+EXF = open('data/P6E.htm')                # Open a offline HTML file
 EXSOUP = BeautifulSoup(EXF.read(), 'lxml')    # soup it 
 LISTS = EXSOUP.select('div li')       # Collect all elements of
 

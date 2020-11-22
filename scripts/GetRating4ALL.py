@@ -8,16 +8,16 @@ import os
 import datetime
 
 ALLHTMLfiles = []
-
-for HTMLfile in os.listdir(os.getcwd()):
+EWApath = input("Provide the full path where EWA reports are stored ... :  ")
+for HTMLfile in os.listdir(EWApath):
 	if HTMLfile.endswith('.htm'):
-		ALLHTMLfiles.append(HTMLfile)
+		ALLHTMLfiles.append(EWApath + "/" + HTMLfile)
 
 DT = datetime.datetime.now()
 DateStamp = DT.strftime('%Y-%m-%d_%H-%M-%S')
 
 for EWAfile in ALLHTMLfiles:
-	EXF = open(EWAfile)                			# Open a offline HTML file
+	EXF = open(EWAfile, encoding='utf-8')                			# Open a offline HTML file
 	EXSOUP = BeautifulSoup(EXF.read(), 'lxml')    	# soup it 
 	HEAD = EXSOUP('h1')
 	DIV = EXSOUP('div', 'sa-text-level1')

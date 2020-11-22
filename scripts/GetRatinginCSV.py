@@ -22,7 +22,7 @@ for HTMLfile in os.listdir(EWApath):
 		ALLHTMLfiles.append(EWApath + "/" + HTMLfile)
 
 for EWAfile in ALLHTMLfiles:
-	EXF = open(EWAfile)                			    # Open a offline HTML file
+	EXF = open(EWAfile, encoding="utf8")                			    # Open a offline HTML file
 	EXSOUP = BeautifulSoup(EXF.read(), 'lxml')    	# soup it 
 	HEAD = EXSOUP('h1')
 	DIV = EXSOUP('div', 'sa-text-level1')

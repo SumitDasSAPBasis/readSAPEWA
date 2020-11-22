@@ -11,6 +11,7 @@ collect/
 data/
 .vs/
 .vscode/
+*workspace*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
